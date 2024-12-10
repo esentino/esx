@@ -1,23 +1,23 @@
-import axios from "axios"
-import { ACCESS_TOKEN } from "./constants"
+import axios from "axios";
+import { ACCESS_TOKEN } from "./constants";
 
-const apiUrl = "/choreo-apis/extra-simple-x/api/v1"
+const apiUrl = "/choreo-apis/extra-simple-x/api/v1";
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl
-})
+  baseURL: import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiUrl,
+});
 
 api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem(ACCESS_TOKEN);
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`
-        }
-        return config
-    },
-    (errror) => {
-        return Promise.reject(errror)
+  (config) => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-)
+    return config;
+  },
+  (errror) => {
+    return Promise.reject(errror);
+  }
+);
 
-export default api
+export default api;
