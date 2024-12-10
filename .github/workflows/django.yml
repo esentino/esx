@@ -46,4 +46,4 @@ jobs:
         DB_PWD: postgres
       run: |
         cd backend
-        python manage.py test
+        python manage.py test --keepdb
