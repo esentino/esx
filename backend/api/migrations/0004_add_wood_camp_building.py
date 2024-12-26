@@ -5,27 +5,31 @@ from django.db import migrations
 from django.apps import registry
 from ..constants import BuildingNames, MaterialNames
 
+
 def add_wood_camp_building(apps: registry.Apps, schema_editor):
-    Building = apps.get_model('api', 'Building')
-    Material = apps.get_model('api', 'Material')
-    BuildingBuildMaterial = apps.get_model('api', 'BuildingBuildMaterial')
-    BuildingProductionMaterial = apps.get_model('api', 'BuildingProductionMaterial')
-    woodcamp = Building.objects.create(name=BuildingNames.LUMBER_MILL, image='lumber mill in elf settings without elves.png')
+    Building = apps.get_model("api", "Building")
+    Material = apps.get_model("api", "Material")
+    BuildingBuildMaterial = apps.get_model("api", "BuildingBuildMaterial")
+    BuildingProductionMaterial = apps.get_model("api", "BuildingProductionMaterial")
+    woodcamp = Building.objects.create(
+        name=BuildingNames.LUMBER_MILL,
+        image="lumber mill in elf settings without elves.png",
+    )
     wood = Material.objects.create(name=MaterialNames.WOOD)
     BuildingBuildMaterial.objects.create(building=woodcamp, material=wood, count=100)
     BuildingProductionMaterial.objects.create(building=woodcamp, material=wood, production_speed=30)
 
 
 def remove_wood_camp_building(apps: registry.Apps, schema_editor):
-    Building = apps.get_model('api', 'Building')
-    Material = apps.get_model('api', 'Material')
+    Building = apps.get_model("api", "Building")
+    Material = apps.get_model("api", "Material")
     Building.objects.get(name=BuildingNames.LUMBER_MILL).delete()
     Material.objects.get(name=MaterialNames.WOOD).delete()
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('api', '0003_alter_building_name_alter_material_name'),
+        ("api", "0003_alter_building_name_alter_material_name"),
     ]
 
     operations = [

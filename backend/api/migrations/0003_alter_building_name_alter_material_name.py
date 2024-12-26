@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0002_building_material_buildingproductionmaterial_and_more'),
+        ("api", "0002_building_material_buildingproductionmaterial_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='building',
-            name='name',
+            model_name="building",
+            name="name",
             field=models.CharField(max_length=100, unique=True),
         ),
         migrations.AlterField(
-            model_name='material',
-            name='name',
+            model_name="material",
+            name="name",
             field=models.CharField(max_length=100, unique=True),
         ),
     ]

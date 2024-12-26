@@ -5,44 +5,90 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0001_initial'),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Building',
+            name="Building",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('image', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("image", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Material',
+            name="Material",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('image', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("image", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='BuildingProductionMaterial',
+            name="BuildingProductionMaterial",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('production_speed', models.FloatField(help_text='production per minute')),
-                ('building', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.building')),
-                ('material', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.material')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "production_speed",
+                    models.FloatField(help_text="production per minute"),
+                ),
+                (
+                    "building",
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.building"),
+                ),
+                (
+                    "material",
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.material"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='BuildingBuildMaterial',
+            name="BuildingBuildMaterial",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.IntegerField()),
-                ('building', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.building')),
-                ('material', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.material')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("count", models.IntegerField()),
+                (
+                    "building",
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.building"),
+                ),
+                (
+                    "material",
+                    models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.material"),
+                ),
             ],
         ),
     ]

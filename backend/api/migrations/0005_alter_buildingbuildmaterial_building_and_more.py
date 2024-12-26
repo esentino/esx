@@ -5,20 +5,27 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('api', '0004_add_wood_camp_building'),
+        ("api", "0004_add_wood_camp_building"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='buildingbuildmaterial',
-            name='building',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='building_materials', to='api.building'),
+            model_name="buildingbuildmaterial",
+            name="building",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="building_materials",
+                to="api.building",
+            ),
         ),
         migrations.AlterField(
-            model_name='buildingproductionmaterial',
-            name='building',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='producted_materials', to='api.building'),
+            model_name="buildingproductionmaterial",
+            name="building",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="producted_materials",
+                to="api.building",
+            ),
         ),
     ]

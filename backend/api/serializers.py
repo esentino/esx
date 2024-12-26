@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from.models import Building, Note
+from .models import Building, Note
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,12 +18,12 @@ class UserSerializer(serializers.ModelSerializer):
 class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
-        fields=["id", "title", "content", "created_at", "author"]
-                
-        extra_kwargs =  {"author": {"read_only": True}}
+        fields = ["id", "title", "content", "created_at", "author"]
+
+        extra_kwargs = {"author": {"read_only": True}}
+
 
 class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
         models = Building
-        fields = ["id","name", "image", "building_materials", "producted_materials"]
-
+        fields = ["id", "name", "image", "building_materials", "producted_materials"]
