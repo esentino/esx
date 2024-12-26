@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import Building, Note
+from .models import Building, Note, BuildingProductionMaterial
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -23,7 +23,18 @@ class NoteSerializer(serializers.ModelSerializer):
         extra_kwargs = {"author": {"read_only": True}}
 
 
+class ProductMaterialSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source="material.name")
+    image = serializers.CharField(source="material.image")
+
+    class Meta:
+        model = BuildingProductionMaterial
+        fields = ["id", "name", "image", "production_speed"]
+
+
 class BuildingSerializer(serializers.ModelSerializer):
+    producted_materials = ProductMaterialSerializer(many=True)
+
     class Meta:
         model = Building
         fields = ["id", "name", "image", "building_materials", "producted_materials"]
