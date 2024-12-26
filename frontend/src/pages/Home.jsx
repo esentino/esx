@@ -55,45 +55,10 @@ function Home() {
 
   return (
     <div>
-      <div>
-        <h2>Notes</h2>
-        {notes.map((note) => (
-          <Note note={note} onDelete={deleteNode} key={note.id} />
-        ))}
-      </div>
-      <h2>Create a note</h2>
-      <form onSubmit={createNote}>
-        <label htmlFor="title">Title:</label>
-        <br />
-        <input
-          type="text"
-          id="title"
-          name="title"
-          required
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
-        />
-        <br />
-        <label htmlFor="title">Content:</label>
-        <br />
-        <input
-          type="textarea"
-          id="content"
-          name="content"
-          required
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-        />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
-
-      <div>
-        <h2>Buildings</h2>
-        {buildings.map((building) => (
-          <Building building={building} key={building.id} />
-        ))}
-      </div>
+      <h2>Buildings</h2>
+      {buildings.map((building) => (
+        <Building building={building} key={building.id} />
+      ))}
     </div>
   );
 }
