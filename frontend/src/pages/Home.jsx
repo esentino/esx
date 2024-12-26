@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../api";
 import Note from "../components/Note";
+import Building from "../components/Building";
 import "../styles/Home.css";
 
 function Home() {
@@ -11,6 +12,7 @@ function Home() {
 
   useEffect(() => {
     getNotes();
+    getBuildings();
   }, []);
 
   const getNotes = () => {
@@ -20,7 +22,13 @@ function Home() {
       .then((data) => setNotes(data))
       .catch((err) => alert(err));
   };
-  
+  const getBuildings = () => {
+    api
+      .get("api/buildings/")
+      .then((res) => res.data)
+      .then((data) => setBuildings(data))
+      .catch((err) => alert(err));
+  };
 
   const deleteNode = (id) => {
     api
@@ -79,6 +87,13 @@ function Home() {
         <br />
         <input type="submit" value="Submit" />
       </form>
+
+      <div>
+        <h2>Buildings</h2>
+        {buildings.map((building) => (
+          <Building building={building} key={building.id} />
+        ))}
+      </div>
     </div>
   );
 }

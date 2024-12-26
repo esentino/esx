@@ -25,5 +25,5 @@ class NoteSerializer(serializers.ModelSerializer):
 
 class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
-        models = Building
+        model = Building
         fields = ["id", "name", "image", "building_materials", "producted_materials"]
