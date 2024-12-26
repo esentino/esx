@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, NoteSerializer
-from .models import Note
+from .serializers import BuildingSerializer, UserSerializer, NoteSerializer
+from .models import Note, Building
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
@@ -37,3 +36,8 @@ class CreateUserView(generics.CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
 
+
+class BuildingListView(generics.ListAPIView):
+    queryset = Building.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = BuildingSerializer

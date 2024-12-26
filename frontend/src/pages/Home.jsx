@@ -7,6 +7,7 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
+  const [buildings, setBuildings] = useState([]);
 
   useEffect(() => {
     getNotes();
@@ -19,6 +20,7 @@ function Home() {
       .then((data) => setNotes(data))
       .catch((err) => alert(err));
   };
+  
 
   const deleteNode = (id) => {
     api
